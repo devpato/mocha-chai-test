@@ -21,14 +21,14 @@ describe('sinon tests', () => {
 
     schedule = {
       dropClass: () => {
-        console.log('Class dropped');
+        console.log('**Class dropped**');
       }
     };
   });
   describe('student.dropClass', () => {
     it('should call callback and log the console', () => {
       const onClassDropped = () => {
-        console.log('my class dropped');
+        console.log('***my class dropped***');
       };
       const spy = sinon.spy(onClassDropped);
       student.dropClass(1, spy);
@@ -45,6 +45,14 @@ describe('sinon tests', () => {
       sinon.spy(schedule, 'dropClass');
       student.dropClass(1, schedule);
       schedule.dropClass.called.should.be.true;
+    });
+  });
+
+  describe('student with stubs', () => {
+    it('should call a stubbed method', () => {
+      const stub = sinon.stub(schedule);
+      student.dropClass(1, stub.dropClass);
+      stub.dropClass.called.should.be.true;
     });
   });
 });
