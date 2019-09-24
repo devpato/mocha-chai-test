@@ -7,7 +7,7 @@ const expect = chai.expect;
 chai.should();
 
 describe('number tests', () => {
-  describe('isEven', () => {
+  describe.only('isEven', () => {
     it('should return true when a number is even', () => {
       isEven(4).should.be.true;
     });
