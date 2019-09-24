@@ -73,4 +73,13 @@ describe('sinon tests', () => {
       returnVal.should.be.true;
     });
   });
+
+  describe('student with mocks', () => {
+    it('mocks schedule', () => {
+      const mockObj = sinon.mock(schedule);
+      const expectation = mockObj.expects('classIsFull').once();
+      student.addClass(schedule);
+      expectation.verify();
+    });
+  });
 });
