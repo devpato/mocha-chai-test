@@ -16,12 +16,23 @@ describe('sinon tests', () => {
         } else {
           cb();
         }
+      },
+
+      addClass: schedule => {
+        if (!schedule.classIsFull()) {
+          return true;
+        } else {
+          return false;
+        }
       }
     };
 
     schedule = {
       dropClass: () => {
         console.log('**Class dropped**');
+      },
+      classIsFull: () => {
+        return true;
       }
     };
   });
@@ -53,6 +64,13 @@ describe('sinon tests', () => {
       const stub = sinon.stub(schedule);
       student.dropClass(1, stub.dropClass);
       stub.dropClass.called.should.be.true;
+    });
+
+    it('should return true when class is not full', () => {
+      const stub = sinon.stub(schedule);
+      stub.classIsFull.returns(false);
+      const returnVal = student.addClass(stub);
+      returnVal.should.be.true;
     });
   });
 });
