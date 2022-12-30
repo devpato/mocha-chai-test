@@ -9,7 +9,7 @@
     "grunt-contrib-watch": "^1.1.0",
     "grunt-mocha-test": "^0.13.3",
     "gulp": "^4.0.2",
-    "gulp-mocha": "^7.0.1",
+    "gulp-mocha": "^8.0.0",
     "gulp-util": "^3.0.8",
     "sinon": "^7.5.0"
   },
